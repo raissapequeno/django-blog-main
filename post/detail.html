@@ -1,8 +1,10 @@
 {% extends '_layout1.html' %}
 <!-- herda tudo que já tem em _layout1.html -->
-{% block head_title %} Bem vindo ao Blog {% endblock %} {% block content %}
+{% block content %}
 <!-- substitui o bloco content em _layout1.html -->
-<h1>{{ titulo }}</h1>
-<!-- variável a ser substituída -->
+<article>
+  <h1>{{ post.pub_date|date:"d / m / Y" }}</h1>
+  <p>{{ post.body_text }}</p>
+</article>
 {% endblock %}
 <!-- fecha o bloco content -->
