@@ -1,0 +1,13 @@
+{% extends '_layout1.html' %} {%block content %}
+<div class="card">
+  <div class="card-header">
+    <h5 class="card-title">Acessar</h5>
+  </div>
+  <div class="card-body">
+    <form method="post">
+      {% csrf_token %} {{ form.as_p }}
+      <button type="submit" class="btn btn-success">Enviar</button>
+    </form>
+  </div>
+</div>
+{% endblock %}
