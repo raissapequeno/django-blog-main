@@ -13,9 +13,18 @@
       {% if post.categoria %}
       <span>Categoria: {{ post.categoria }}</span>
       {% endif %}
+      {% if post.autor %}
+        <span>Autor: {{post.autor.username}}</span>
+      {% else %}
+        <span>Autor: Desconhecido</span>
+      {% endif %} <br/>
       <p>{{ post.body_text }}</p>
       <a href="{% url 'post_edit' pk=post.id %}" class="link-secondary">
         Editar
+      </a>
+      <br />
+      <a href="{% url 'post_delete' pk=post.id %}" class="link-secondary">
+        Excluir
       </a>
     </article>
     {% endfor %}

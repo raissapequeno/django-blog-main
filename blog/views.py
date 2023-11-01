@@ -7,7 +7,7 @@ from django.views.generic import DetailView, ListView, TemplateView
 
 import json
 from django.core.serializers.json import DjangoJSONEncoder
-from django.views.generic.edit import CreateView, UpdateView
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.urls import reverse_lazy
 
 from blog.models import Post
@@ -106,6 +106,7 @@ class PostCreateView(LoginRequiredMixin, CreateView):
     success_message = "Postagem salva com sucesso."
 
     def form_valid(self, form):
+        form.instance.autor = self.request.user
         messages.success(self.request, self.success_message)
         return super(PostUpdateView, self).form_valid(form)
 
@@ -130,6 +131,17 @@ class PostUpdateView(LoginRequiredMixin, UpdateView):
         context = super(PostUpdateView, self).get_context_data(**kwargs)
         context["form_title"] = "Editando o post"
         return context
+
+
+class PostDeleteView(LoginRequiredMixin, DeleteView):
+    model = Post
+    template_name = "post/post_confirm_delete_form.html"
+    success_url = reverse_lazy("posts_all")
+    success_message = "A postagem foi excluída com sucesso."
+
+    def form_valid(self, form):
+        messages.success(self.request, self.success_message)
+        return super(PostDeleteView, self).form_valid(form)
 
 
 @csrf_exempt
