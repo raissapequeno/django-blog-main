@@ -9,5 +9,18 @@
   {% endif %}
   <p>{{ post.body_text }}</p>
 </article>
+<div class="card-body">
+  <form action="{% url 'post_send' post_id=post.id %}" method="post">
+    <label for="email">Compartilhar</label>
+    <input
+      type="text"
+      id="email"
+      name="email"
+      placeholder="Informe o e-mail"
+      value=""
+    />
+    <button type="submit" class="btn btn-warning">Enviar</button>
+  </form>
+</div>
 {% endblock %}
 <!-- fecha o bloco content -->

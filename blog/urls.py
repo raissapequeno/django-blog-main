@@ -13,6 +13,7 @@ from blog.views import (
     SobreTemplateView,
     PostUpdateView,
     PostDeleteView,
+    post_send,
 )
 
 from django.conf import settings
@@ -33,6 +34,7 @@ urlpatterns = [
     path("about-us", SobreTemplateView.as_view(), name="about_page"),
     path("post/<int:pk>/edit", PostUpdateView.as_view(), name="post_edit"),
     path("post/<int:pk>/delete", PostDeleteView.as_view(), name="post_delete"),
+    path("post-send/<int:post_id>", post_send, name="post_send"),
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

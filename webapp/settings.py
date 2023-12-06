@@ -152,3 +152,10 @@ AUTH_USER_MODEL = "accounts.CustomUser"
 
 MEDIA_URL = "/media/"
 MEDIA_ROOT = os.path.join(BASE_DIR, "files/")
+
+EMAIL_BAKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = '587'
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = 'hello@wanderson.pro.br'
+EMAIL_HOST_PASSWORD = ''
